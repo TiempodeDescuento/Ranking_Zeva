@@ -333,6 +333,59 @@
         .podium { animation: fadeUp 0.5s 0.1s ease both; }
         .ranking-table { animation: fadeUp 0.5s 0.2s ease both; }
         .footer { animation: fadeUp 0.5s 0.3s ease both; }
+
+        /* ─── OPTIMIZACIÓN PARA MÓVILES (RESPONSIVE) ─── */
+        @media (max-width: 768px) {
+            .page {
+                padding: 15px;
+                gap: 15px;
+            }
+
+            /* Header: De 3 columnas a 1 para que no se amontone */
+            .header {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                text-align: center;
+            }
+            .header-left, .header-center, .header-right {
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+
+            /* Podio: De 3 columnas a 1 columna vertical */
+            .podium {
+                grid-template-columns: 1fr;
+                display: flex;
+                flex-direction: column;
+            }
+
+            /* Reordenar podio en móvil: 1ro arriba, luego 2do y 3ro */
+            .rank-1 { order: 1; min-height: auto !important; flex-grow: 1 !important; }
+            .rank-2 { order: 2; min-height: auto !important; }
+            .rank-3 { order: 3; min-height: auto !important; }
+
+            /* Tabla: Hacemos que se pueda deslizar hacia los lados si es muy ancha */
+            .ranking-table {
+                overflow-x: auto;
+                display: block;
+            }
+            .table-header, .table-row {
+                min-width: 600px; /* Evita que las columnas se colapsen */
+            }
+
+            /* Footer: Apilado vertical */
+            .footer {
+                flex-direction: column;
+                text-align: center;
+                gap: 8px;
+            }
+            
+            .advisor-photo {
+                width: 80px !important;
+                height: 80px !important;
+            }
+        }
     </style>
 </head>
 <body>
